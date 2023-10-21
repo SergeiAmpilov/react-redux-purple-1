@@ -1,10 +1,6 @@
 import './JournalItem.css';
 
-export const JournalItem = () => {
-
-	const title = 'Подготовка и обновление курса';
-	const date = new Date();
-	const text = 'Горные походы открывают удивительные горные ландшафты';
+export const JournalItem = ({ title, date, text}) => {
 
 	return (
 		<div className="journal-item">

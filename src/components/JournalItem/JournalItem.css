@@ -2,6 +2,7 @@
 	border-radius: 3px;
 	background: rgba(255, 255, 255, 0.03);
 	padding: 20px;
+	color: #fff;
 
 	width: 360px;
 	margin-top: 20px;
@@ -18,15 +19,23 @@
 .journal-item__body {
 	display: grid;
 	grid-template-columns: 1fr 2fr;;
-	gap: 10px;
-
-	color: rgba(255, 255, 255, 0.40);
-	
+	gap: 10px;	
 	
 	font-size: 16px;
 	font-weight: 400;
 	line-height: normal;
 }
+
+.journal-item__date {
+	color: rgba(255, 255, 255, .4);
+}
+
+.journal-item__text {
+	color: rgba(255, 255, 255, .6);
+	overflow: hidden;
+}
+
+
 
 
 .journal-item__active {

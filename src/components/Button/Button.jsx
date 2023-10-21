@@ -1,8 +1,13 @@
 import './Button.css';
 
 export const Button = () => {
+
+	const handleClick = () => {
+		console.log('hw');
+	};
+
 	return (
-		<button className='button accent'>
+		<button onClick={handleClick} className='button accent'>
 			button
 		</button>
 	);

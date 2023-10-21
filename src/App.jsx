@@ -1,13 +1,14 @@
-import React from 'react';
 import './App.css';
+import Button from './components/Button/Button';
 
 function App() {
   
-  return React.createElement(
-    React.Fragment,
-    {},
-    'Project',
-    React.createElement('p', {}, 'Subtext')
+  return (
+    <>
+      <h1>Project</h1>
+      <p>subtitle</p>
+      <Button />
+    </>
   );
 
 }

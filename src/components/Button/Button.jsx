@@ -7,7 +7,7 @@ export const Button = () => {
 
 	const handleClick = () => {
 		console.log('hw');
-		setText('Закрыть');
+		setText( t => t + '!');
 	};
 
 	return (

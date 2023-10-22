@@ -2,10 +2,10 @@ import './JournalAddButton.css';
 
 import { CardButton } from '../CardButton/CardButton';
 
-export const JournalAddButton = ({ children }) => {
+export const JournalAddButton = () => {
 	return (
-		<CardButton>
-			{ children }
+		<CardButton className="journal-add">
+			Add button
 		</CardButton>
 	);
 };

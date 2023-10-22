@@ -4,16 +4,16 @@
 		padding: 20px;
 		color: #fff;
 	
-		width: 360px;
-		margin-top: 20px;
 
 		border: none;
 		cursor: pointer;
 
 		text-align: start;
 		display: block;
+		width: 100%;
 }
 
 .card-button:hover {
 		background: rgba(255, 255, 255, 0.1);
 }
+

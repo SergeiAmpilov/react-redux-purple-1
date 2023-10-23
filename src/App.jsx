@@ -34,7 +34,13 @@ function App() {
 	const [dataList, setDataList] = useState(data);
 
 	const handleAddItem = (item) => {
-		setDataList([ item, ...dataList ]);
+		setDataList([
+			{
+				...item,
+				date: new Date(item.date)
+			},
+			...dataList
+		]);
 	};
 
   

@@ -2,8 +2,8 @@ import './JournalItem.css';
 
 export const JournalItem = ({ title, date, text}) => {
 
-	// const formatedDate = new Intl.DateTimeFormat('ru-RU').format(date);
-	const formatedDate = date.toLocaleString('ru-RU');
+	const formatedDate = new Intl.DateTimeFormat('ru-RU').format(date);
+	// const formatedDate = date.toLocaleString('ru-RU');
 	
 	
 

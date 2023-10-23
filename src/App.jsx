@@ -1,6 +1,4 @@
-import React from 'react';
 import './App.css';
-import { Button } from './components/Button/Button';
 import { CardButton } from './components/CardButton/CardButton';
 import { Header } from './components/Header/Header';
 import { JournalAddButton } from './components/JournalAddButton/JournalAddButton';
@@ -8,6 +6,7 @@ import { JournalItem } from './components/JournalItem/JournalItem';
 import { JournalList } from './components/JournalList/JournalList';
 import { Body } from './layouts/Body/Body';
 import { LeftPanel } from './layouts/LeftPanel/LeftPanel';
+import { JournalForm } from './components/JournalForm/JournalForm';
 
 function App() {
 
@@ -28,13 +27,6 @@ function App() {
 			text: 'Горные походы открывают удивительные природные ландшафты'
 		}
 	];
-
-	const [inputData, setInputData] = React.useState('');
-
-	const handleInputChange = (event) => {
-		setInputData(event.target.value);
-		console.log(inputData);
-	};
   
 	return (
 		<>
@@ -60,13 +52,7 @@ function App() {
 					</JournalList>
 				</LeftPanel>
 				<Body>
-					<h1>Project</h1>
-					<p>subtitle</p>
-					<Button />
-					<br />
-					<input type="text" onChange={handleInputChange} value={inputData} />
-					<br />
-					<pre>{ inputData }</pre>
+					<JournalForm />
 				</Body>
 			</div>
 

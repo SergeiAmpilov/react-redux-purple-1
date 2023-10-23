@@ -7,8 +7,11 @@ import { JournalList } from './components/JournalList/JournalList';
 import { Body } from './layouts/Body/Body';
 import { LeftPanel } from './layouts/LeftPanel/LeftPanel';
 import { JournalForm } from './components/JournalForm/JournalForm';
+import { useState } from 'react';
+
 
 function App() {
+
 
 	const data = [
 		{
@@ -27,6 +30,13 @@ function App() {
 			text: 'Горные походы открывают удивительные природные ландшафты'
 		}
 	];
+
+	const [dataList, setDataList] = useState(data);
+
+	const handleAddItem = (item) => {
+		setDataList([ item, ...dataList ]);
+	};
+
   
 	return (
 		<>
@@ -35,24 +45,21 @@ function App() {
 					<Header />
 					<JournalAddButton />
 					<JournalList>
-						<CardButton>
-							<JournalItem 
-								title={data[0].title}
-								date={data[0].date}
-								text={data[0].text}
-							/>
-						</CardButton>
-						<CardButton>
-							<JournalItem 
-								title={data[1].title}
-								date={data[1].date}
-								text={data[1].text}
-							/>
-						</CardButton>
+						{ 
+							dataList.map((element, i) => (
+								<CardButton key={i}>
+									<JournalItem 
+										title={element.title}
+										date={element.date}
+										text={element.text}
+									/>
+								</CardButton>
+							))
+						}
 					</JournalList>
 				</LeftPanel>
 				<Body>
-					<JournalForm />
+					<JournalForm addItem={handleAddItem} />
 				</Body>
 			</div>
 

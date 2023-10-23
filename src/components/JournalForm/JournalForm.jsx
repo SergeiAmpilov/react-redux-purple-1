@@ -4,7 +4,7 @@ import { Button } from '../Button/Button';
 import './JournalForm.css';
 
 
-export const JournalForm = () => {
+export const JournalForm = ({ addItem }) => {
 
 	const [inputData, setInputData] = React.useState('');
 
@@ -18,7 +18,7 @@ export const JournalForm = () => {
 
 		const formData = new FormData(event.target);
 		const formProps = Object.fromEntries(formData);
-		console.log(formProps);
+		addItem(formProps);
 	};
 
 	
@@ -27,7 +27,7 @@ export const JournalForm = () => {
 			<input type="text" name="title" />
 			<input type="date" name="date" />
 			<input type="text" name="tag" onChange={handleInputChange} value={inputData} />
-			<textarea name="post" id="" cols="30" rows="10"></textarea>
+			<textarea name="text" id="" cols="30" rows="10"></textarea>
 			<Button text={'Save'}/>
 
 		</form>

@@ -15,16 +15,19 @@ function App() {
 
 	const data = [
 		{
+			id: 1,
 			title: 'Подготовка и обновление курса',
 			date: new Date(),
 			text: 'Горные походы открывают удивительные природные ландшафты'
 		},
 		{
+			id: 2,
 			title: 'Поход в горы',
 			date: new Date(),
 			text: 'Горные походы открывают удивительные природные ландшафты'
 		},
 		{
+			id: 3,
 			title: 'Сборка рюкзака',
 			date: new Date(),
 			text: 'Горные походы открывают удивительные природные ландшафты'
@@ -34,10 +37,11 @@ function App() {
 	const [dataList, setDataList] = useState(data);
 
 	const handleAddItem = (item) => {
-		setDataList([
+		setDataList(oldItems => [
 			{
 				...item,
-				date: new Date(item.date)
+				date: new Date(item.date),
+				id: Math.max(oldItems.map(el => el.id)) + 1
 			},
 			...dataList
 		]);
@@ -52,8 +56,8 @@ function App() {
 					<JournalAddButton />
 					<JournalList>
 						{ 
-							dataList.map((element, i) => (
-								<CardButton key={i}>
+							dataList.map((element) => (
+								<CardButton key={element.id}>
 									<JournalItem 
 										title={element.title}
 										date={element.date}

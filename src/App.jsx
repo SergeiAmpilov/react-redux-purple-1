@@ -1,3 +1,4 @@
+import React from 'react';
 import './App.css';
 import { Button } from './components/Button/Button';
 import { CardButton } from './components/CardButton/CardButton';
@@ -27,6 +28,13 @@ function App() {
 			text: 'Горные походы открывают удивительные природные ландшафты'
 		}
 	];
+
+	const [inputData, setInputData] = React.useState('');
+
+	const handleInputChange = (event) => {
+		setInputData(event.target.value);
+		console.log(inputData);
+	};
   
 	return (
 		<>
@@ -54,7 +62,11 @@ function App() {
 				<Body>
 					<h1>Project</h1>
 					<p>subtitle</p>
-					<Button />			
+					<Button />
+					<br />
+					<input type="text" onChange={handleInputChange} value={inputData} />
+					<br />
+					<pre>{ inputData }</pre>
 				</Body>
 			</div>
 

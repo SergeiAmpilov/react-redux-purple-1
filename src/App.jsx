@@ -1,8 +1,6 @@
 import './App.css';
-import { CardButton } from './components/CardButton/CardButton';
 import { Header } from './components/Header/Header';
 import { JournalAddButton } from './components/JournalAddButton/JournalAddButton';
-import { JournalItem } from './components/JournalItem/JournalItem';
 import { JournalList } from './components/JournalList/JournalList';
 import { Body } from './layouts/Body/Body';
 import { LeftPanel } from './layouts/LeftPanel/LeftPanel';
@@ -54,22 +52,7 @@ function App() {
 				<LeftPanel>
 					<Header />
 					<JournalAddButton />
-					<JournalList>
-						{ 
-							dataList.length 
-								? dataList.map((element) => (
-									<CardButton key={element.id}>
-										<JournalItem 
-											title={element.title}
-											date={element.date}
-											text={element.text}
-										/>
-									</CardButton>
-								))
-								: <p>Ничего не найдено</p>
-
-						}
-					</JournalList>
+					<JournalList items={dataList} />
 				</LeftPanel>
 				<Body>
 					<JournalForm addItem={handleAddItem} />

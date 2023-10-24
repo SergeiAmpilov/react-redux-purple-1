@@ -35,14 +35,17 @@ function App() {
 	const [dataList, setDataList] = useState(data);
 
 	const handleAddItem = (item) => {
-		setDataList(oldItems => [
-			{
-				...item,
-				date: new Date(item.date),
-				id: Math.max(oldItems.map(el => el.id)) + 1
-			},
-			...dataList
-		]);
+		
+		setDataList((oldItems) => {
+			return [
+				{
+					...item,
+					date: new Date(item.date),
+					id: Math.max(...oldItems.map(el => el.id)) + 1
+				},
+				...oldItems
+			];
+		});
 	};
 
   

@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import { Button } from '../Button/Button';
 
 import './JournalForm.css';
@@ -6,7 +6,12 @@ import './JournalForm.css';
 
 export const JournalForm = ({ addItem }) => {
 
-	const [inputData, setInputData] = React.useState('');
+	const [inputData, setInputData] = useState('');
+	const [formValidState, setFormValidState] = useState({
+		title: true,
+		text: true,
+		date: true
+	});
 
 	const handleInputChange = (event) => {
 		setInputData(event.target.value);
@@ -18,6 +23,50 @@ export const JournalForm = ({ addItem }) => {
 
 		const formData = new FormData(event.target);
 		const formProps = Object.fromEntries(formData);
+
+		let isFormValid = true;
+
+		if (!formProps.title.trim().length ) {
+			setFormValidState((previousState) => {
+				return {
+					...previousState,
+					title: false
+				};
+			});
+
+			isFormValid = false;
+		}
+
+		if (!formProps.text.trim().length ) {
+			setFormValidState((previousState) => {
+				return {
+					...previousState,
+					text: false
+				};
+			});
+
+			isFormValid = false;
+		}
+
+		if (!formProps.date ) {
+			setFormValidState((previousState) => {
+				return {
+					...previousState,
+					date: false
+				};
+			});
+
+			isFormValid = false;
+
+		}
+
+		if (!isFormValid) {
+			return ;
+		}
+
+		
+
+
 		addItem(formProps);
 	};
 

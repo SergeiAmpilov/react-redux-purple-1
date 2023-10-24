@@ -41,7 +41,7 @@ function App() {
 				{
 					...item,
 					date: new Date(item.date),
-					id: Math.max(...oldItems.map(el => el.id)) + 1
+					id: (oldItems.length ? Math.max(...oldItems.map(el => el.id)) : 0) + 1
 				},
 				...oldItems
 			];

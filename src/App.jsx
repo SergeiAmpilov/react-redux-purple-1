@@ -56,15 +56,18 @@ function App() {
 					<JournalAddButton />
 					<JournalList>
 						{ 
-							dataList.map((element) => (
-								<CardButton key={element.id}>
-									<JournalItem 
-										title={element.title}
-										date={element.date}
-										text={element.text}
-									/>
-								</CardButton>
-							))
+							dataList.length 
+								? dataList.map((element) => (
+									<CardButton key={element.id}>
+										<JournalItem 
+											title={element.title}
+											date={element.date}
+											text={element.text}
+										/>
+									</CardButton>
+								))
+								: <p>Ничего не найдено</p>
+
 						}
 					</JournalList>
 				</LeftPanel>

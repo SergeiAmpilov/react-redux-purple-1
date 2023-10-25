@@ -10,28 +10,6 @@ import { useState, useEffect } from 'react';
 
 function App() {
 
-
-	const data = [
-		{
-			id: 1,
-			title: 'Подготовка и обновление курса',
-			date: new Date(),
-			text: 'Горные походы открывают удивительные природные ландшафты'
-		},
-		{
-			id: 2,
-			title: 'Поход в горы',
-			date: new Date(),
-			text: 'Горные походы открывают удивительные природные ландшафты'
-		},
-		{
-			id: 3,
-			title: 'Сборка рюкзака',
-			date: new Date(),
-			text: 'Горные походы открывают удивительные природные ландшафты'
-		}
-	];
-
 	const [dataList, setDataList] = useState([]);
 
 	useEffect(() => {
@@ -45,7 +23,16 @@ function App() {
 			})));
 		}
 
-	}, []);
+	}, [setDataList]);
+
+
+	useEffect(() => {
+		if (!dataList.length) {
+			return;
+		}
+		const strData = JSON.stringify(dataList);
+		localStorage.setItem('data', strData);
+	}, [dataList]);
 
 	const handleAddItem = (item) => {
 		

@@ -10,7 +10,6 @@
 }
 
 .label {
-	border-bottom: 1px solid gray;
 	padding: 15px 0;
 
 	display: grid;
@@ -20,6 +19,7 @@
 .input {
 	background: none;
 	border: none;
+	border-bottom: 1px solid gray;
 }
 
 .input-title {

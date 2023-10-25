@@ -64,19 +64,16 @@ export const JournalForm = ({ addItem }) => {
 			return ;
 		}
 
-		
-
-
 		addItem(formProps);
 	};
 
 	
 	return (
 		<form className='journal-form' onSubmit={handleSubmit}>
-			<input type="text" name="title" />
-			<input type="date" name="date" />
+			<input type="text" name="title" className={`input ${ formValidState.title ? '' : 'invalid'}`}/>
+			<input type="date" name="date" className={`input ${ formValidState.date ? '' : 'invalid'}`}/>
 			<input type="text" name="tag" onChange={handleInputChange} value={inputData} />
-			<textarea name="text" id="" cols="30" rows="10"></textarea>
+			<textarea name="text" id="" cols="30" rows="10" className={`input ${ formValidState.text ? '' : 'invalid'}`}></textarea>
 			<Button text={'Save'}/>
 
 		</form>

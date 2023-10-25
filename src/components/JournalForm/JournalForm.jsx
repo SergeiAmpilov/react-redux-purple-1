@@ -1,18 +1,19 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button } from '../Button/Button';
 
 import cn from 'classnames';
 import styles from './JournalForm.module.css';
 
+const INITIAL_STATE = {
+	title: true,
+	text: true,
+	date: true
+};
 
 export const JournalForm = ({ addItem }) => {
 
 	const [inputData, setInputData] = useState('');
-	const [formValidState, setFormValidState] = useState({
-		title: true,
-		text: true,
-		date: true
-	});
+	const [formValidState, setFormValidState] = useState(INITIAL_STATE);
 
 	const handleInputChange = (event) => {
 		setInputData(event.target.value);
@@ -67,6 +68,16 @@ export const JournalForm = ({ addItem }) => {
 
 		addItem(formProps);
 	};
+
+
+	useEffect(() => {
+		let timerId;
+		if (!formValidState.title || !formValidState.text || !formValidState.date) {
+			timerId = setTimeout(() => setFormValidState({...INITIAL_STATE}), 2000);
+		}
+
+		return () => { clearTimeout(timerId); };
+	}, [formValidState]);
 
 	
 	return (

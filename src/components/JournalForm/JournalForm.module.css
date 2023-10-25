@@ -8,3 +8,26 @@
 	border: 1px solid red;
 	background: lightsalmon;
 }
+
+.label {
+	border-bottom: 1px solid gray;
+	padding: 15px 0;
+
+	display: grid;
+	grid-template-columns: 1fr 1fr 10fr;
+}
+
+.input {
+	background: none;
+	border: none;
+}
+
+.input-title {
+	font-size: 32px; 
+	font-style: normal;
+	font-weight: 600;
+	line-height: normal;
+
+
+	
+}

@@ -72,18 +72,27 @@ export const JournalForm = ({ addItem }) => {
 	return (
 		<form className={styles['journal-form']} onSubmit={handleSubmit}>
 			<input type="text" name="title" className={
-				cn('input', {
+				cn(styles.input, styles['input-title'], {
 					[styles.invalid]: !formValidState.title
 				})
 			}/>
-			<input type="date" name="date" className={
-				cn('input', {
-					[styles.invalid]: !formValidState.date
-				})
-			}/>
-			<input type="text" name="tag" onChange={handleInputChange} value={inputData} />
+			<label htmlFor="" className={styles.label}>
+				<img src="/calendar.svg" alt="calendar" />
+				<span>Дата</span>
+				
+				<input type="date" name="date" className={
+					cn(styles.input, {
+						[styles.invalid]: !formValidState.date
+					})
+				}/>
+			</label>
+			<label htmlFor="" className={styles.label}>
+				<img src="/folder.svg" alt="folder" />
+				<span>Метки</span>				
+				<input type="text" name="tag" onChange={handleInputChange} value={inputData} className={styles.input} />
+			</label>
 			<textarea name="text" id="" cols="30" rows="10" className={
-				cn('input', {
+				cn(styles.input, {
 					[styles.invalid]: !formValidState.text
 				})
 			}></textarea>

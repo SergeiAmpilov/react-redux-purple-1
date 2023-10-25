@@ -96,7 +96,7 @@ export const JournalForm = ({ addItem }) => {
 					[styles.invalid]: !formValidState.text
 				})
 			}></textarea>
-			<Button text={'Save'}/>
+			<Button text={'Save'} className={styles.button}/>
 
 		</form>
 		

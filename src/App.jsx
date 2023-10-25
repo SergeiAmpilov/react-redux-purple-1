@@ -5,7 +5,7 @@ import { JournalList } from './components/JournalList/JournalList';
 import { Body } from './layouts/Body/Body';
 import { LeftPanel } from './layouts/LeftPanel/LeftPanel';
 import { JournalForm } from './components/JournalForm/JournalForm';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 
 function App() {
@@ -32,7 +32,20 @@ function App() {
 		}
 	];
 
-	const [dataList, setDataList] = useState(data);
+	const [dataList, setDataList] = useState([]);
+
+	useEffect(() => {
+		
+		const srcData = JSON.parse(localStorage.getItem('data'));
+
+		if (srcData) {
+			setDataList(srcData.map(item => ({
+				...item,
+				date: new Date(item.date)
+			})));
+		}
+
+	}, []);
 
 	const handleAddItem = (item) => {
 		

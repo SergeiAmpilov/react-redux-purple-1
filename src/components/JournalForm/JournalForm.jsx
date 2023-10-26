@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from 'react';
+import { useEffect, useReducer, useRef } from 'react';
 import { Button } from '../Button/Button';
 
 import cn from 'classnames';
@@ -11,6 +11,9 @@ export const JournalForm = ({ addItem }) => {
 
 	const [ formState, dispatchForm ] = useReducer(formReducer, INITIAL_STATE);
 	const { isValid, isFormReadyToSubmit, values } = formState;
+	const titleRef = useRef();
+	const dateRef = useRef();
+	const textRef = useRef();
 
 
 
@@ -32,12 +35,33 @@ export const JournalForm = ({ addItem }) => {
 	useEffect(() => {
 		let timerId;
 		if (!isValid.title || !isValid.text || !isValid.date) {
+
+			focusError(isValid);
+
 			timerId = setTimeout(() => {
 				dispatchForm({ type: 'RESET_VALIDITY'});
 			}, 2000);
 		}
 		return () => { clearTimeout(timerId); };
 	}, [isValid]);
+
+
+	const focusError = (isValid) => {
+
+		switch(true) {
+		case !isValid.title:
+			titleRef.current.focus();
+			break;
+		case !isValid.date:
+			dateRef.current.focus();
+			break;
+		case !isValid.text:
+			textRef.current.focus();
+			break;
+
+		}
+		
+	};
 
 	const handleChange = (evt) => {
 		dispatchForm({ type: 'FIELD_CHANGE', payload: {
@@ -49,7 +73,7 @@ export const JournalForm = ({ addItem }) => {
 	
 	return (
 		<form className={styles['journal-form']} onSubmit={handleSubmit}>
-			<input type="text" value={values.title} onChange={handleChange} name="title" className={
+			<input type="text" ref={titleRef} value={values.title} onChange={handleChange} name="title" className={
 				cn(styles.input, styles['input-title'], {
 					[styles.invalid]: !isValid.title
 				})
@@ -58,7 +82,7 @@ export const JournalForm = ({ addItem }) => {
 				<img src="/calendar.svg" alt="calendar" />
 				<span>Дата</span>
 				
-				<input type="date" value={values.date} onChange={handleChange} name="date" className={
+				<input type="date" ref={dateRef} value={values.date} onChange={handleChange} name="date" className={
 					cn(styles.input, {
 						[styles.invalid]: !isValid.date
 					})
@@ -69,7 +93,7 @@ export const JournalForm = ({ addItem }) => {
 				<span>Метки</span>				
 				<input type="text" value={values.tag} name="tag" onChange={handleChange} className={styles.input} />
 			</label>
-			<textarea name="text" id="" cols="30" value={values.text} onChange={handleChange} rows="10" className={
+			<textarea name="text" ref={textRef} id="" cols="30" value={values.text} onChange={handleChange} rows="10" className={
 				cn(styles.input, {
 					[styles.invalid]: !isValid.text
 				})

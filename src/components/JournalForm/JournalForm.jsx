@@ -12,13 +12,9 @@ const INITIAL_STATE = {
 
 export const JournalForm = ({ addItem }) => {
 
-	const [inputData, setInputData] = useState('');
 	const [formValidState, setFormValidState] = useState(INITIAL_STATE);
 
-	const handleInputChange = (event) => {
-		setInputData(event.target.value);
-		console.log(inputData);
-	};
+
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
@@ -100,7 +96,7 @@ export const JournalForm = ({ addItem }) => {
 			<label htmlFor="" className={styles.label}>
 				<img src="/folder.svg" alt="folder" />
 				<span>Метки</span>				
-				<input type="text" name="tag" onChange={handleInputChange} value={inputData} className={styles.input} />
+				<input type="text" name="tag" className={styles.input} />
 			</label>
 			<textarea name="text" id="" cols="30" rows="10" className={
 				cn(styles.input, {

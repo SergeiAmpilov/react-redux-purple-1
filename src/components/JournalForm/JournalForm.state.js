@@ -6,9 +6,10 @@ export const INITIAL_STATE = {
 		date: true
 	},
 	values: {
-		text: undefined,
-		title: undefined,
-		date: undefined
+		text: '',
+		title: '',
+		date: '',
+		tag: ''
 	},
 	isFormReadyToSubmit: false
 };
@@ -36,6 +37,19 @@ export const formReducer = (previousState, action) => {
 			isFormReadyToSubmit: titleValidity && textValidity && dateValidity
 		};
 	}
+
+	case 'FIELD_CHANGE': {
+		return {
+			...previousState,
+			values: {
+				...previousState.values,
+				[action.payload.name]: action.payload.value
+			}
+		};
+	}
+
+	case 'CLEANUP':
+		return INITIAL_STATE;
 	}
 
 };

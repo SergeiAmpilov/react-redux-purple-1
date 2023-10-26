@@ -10,7 +10,7 @@ export const JournalForm = ({ addItem }) => {
 
 
 	const [ formState, dispatchForm ] = useReducer(formReducer, INITIAL_STATE);
-	const { isValid, isFormReadyToSubmit } = formState;
+	const { isValid, isFormReadyToSubmit, values } = formState;
 
 
 
@@ -28,7 +28,8 @@ export const JournalForm = ({ addItem }) => {
 	
 	useEffect( () => {
 		if (isFormReadyToSubmit) {
-			addItem(formState.values);
+			addItem(values);
+			dispatchForm({ type: 'CLEANUP' });
 		}
 	}, [isFormReadyToSubmit]);
 
@@ -43,10 +44,17 @@ export const JournalForm = ({ addItem }) => {
 		return () => { clearTimeout(timerId); };
 	}, [isValid]);
 
+	const handleChange = (evt) => {
+		dispatchForm({ type: 'FIELD_CHANGE', payload: {
+			name: evt.target.name,
+			value: evt.target.value
+		} });
+
+	};
 	
 	return (
 		<form className={styles['journal-form']} onSubmit={handleSubmit}>
-			<input type="text" name="title" className={
+			<input type="text" value={values.title} onChange={handleChange} name="title" className={
 				cn(styles.input, styles['input-title'], {
 					[styles.invalid]: !isValid.title
 				})
@@ -55,7 +63,7 @@ export const JournalForm = ({ addItem }) => {
 				<img src="/calendar.svg" alt="calendar" />
 				<span>Дата</span>
 				
-				<input type="date" name="date" className={
+				<input type="date" value={values.date} onChange={handleChange} name="date" className={
 					cn(styles.input, {
 						[styles.invalid]: !isValid.date
 					})
@@ -64,9 +72,9 @@ export const JournalForm = ({ addItem }) => {
 			<label htmlFor="" className={styles.label}>
 				<img src="/folder.svg" alt="folder" />
 				<span>Метки</span>				
-				<input type="text" name="tag" className={styles.input} />
+				<input type="text" value={values.tag} name="tag" onChange={handleChange} className={styles.input} />
 			</label>
-			<textarea name="text" id="" cols="30" rows="10" className={
+			<textarea name="text" id="" cols="30" value={values.text} onChange={handleChange} rows="10" className={
 				cn(styles.input, {
 					[styles.invalid]: !isValid.text
 				})

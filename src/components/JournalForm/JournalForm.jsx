@@ -17,12 +17,7 @@ export const JournalForm = ({ addItem }) => {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-
-		const formData = new FormData(event.target);
-		const formProps = Object.fromEntries(formData);
-
-		dispatchForm({ type: 'SUBMIT', payload: formProps });
-		
+		dispatchForm({ type: 'SUBMIT' });
 	};
 	
 	

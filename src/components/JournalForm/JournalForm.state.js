@@ -23,12 +23,12 @@ export const formReducer = (previousState, action) => {
 		
 
 	case 'SUBMIT': {
-		const titleValidity = action.payload.title.trim().length;
-		const textValidity = action.payload.text.trim().length;
-		const dateValidity = action.payload.date;
+		const titleValidity = previousState.values.title.trim().length;
+		const textValidity  = previousState.values.text.trim().length;
+		const dateValidity  = previousState.values.date;
 
 		return {
-			values: action.payload,
+			...previousState,
 			isValid: {
 				text: textValidity,
 				title: titleValidity,

@@ -1,0 +1,18 @@
+.input {
+	background: none;
+	border: none;
+	border-bottom: 1px solid gray;
+	transition: all .5s linear;
+}
+
+.input-title {
+	font-size: 32px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: normal;
+}
+
+.invalid {
+	border: 1px solid red;
+	background: lightsalmon;
+}

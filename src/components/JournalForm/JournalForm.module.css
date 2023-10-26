@@ -18,18 +18,9 @@
 	transition: all .5s linear;
 }
 
-.input-title {
-	font-size: 32px; 
-	font-style: normal;
-	font-weight: 600;
-	line-height: normal;	
-}
-
-
 .button {
 	max-width: 200px;
 }
-
 .invalid {
 	border: 1px solid red;
 	background: lightsalmon;

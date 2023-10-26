@@ -26,7 +26,7 @@ export const JournalForm = ({ addItem }) => {
 			addItem(values);
 			dispatchForm({ type: 'CLEANUP' });
 		}
-	}, [isFormReadyToSubmit]);
+	}, [isFormReadyToSubmit, values, addItem]);
 
 
 	useEffect(() => {

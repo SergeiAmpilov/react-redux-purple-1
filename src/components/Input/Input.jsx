@@ -3,10 +3,6 @@ import styles from './Input.module.css';
 import cn from 'classnames';
 
 
-
-
-
-
 export const Input = forwardRef(
 	function Input({ className, isValid = true, appearance, ...props }, ref) {
 		return (

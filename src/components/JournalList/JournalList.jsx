@@ -4,7 +4,7 @@ import './JournalList.css';
 
 export const JournalList = ({ items }) => {
 
-	if (!items.length) {
+	if (!items || !items.length) {
 		return <>Записей пока нет. Добавьте первую</>;
 	}
 

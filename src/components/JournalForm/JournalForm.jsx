@@ -77,11 +77,9 @@ export const JournalForm = ({ addItem }) => {
 			<Input 
 				isValid={isValid.title}
 				type="text" value={values.title} onChange={handleChange} name="title" ref={titleRef} appearance={'title'}/>
-
 			<label htmlFor="" className={styles.label}>
 				<img src="/calendar.svg" alt="calendar" />
 				<span>Дата</span>
-				
 				<Input 
 					isValid={isValid.date}
 					type="date" ref={dateRef} value={values.date} onChange={handleChange} name="date" />
@@ -98,7 +96,6 @@ export const JournalForm = ({ addItem }) => {
 					})
 				}></textarea>
 			<Button text={'Save'} className={styles.button}/>
-
 		</form>
 		
 	);

@@ -4,11 +4,11 @@ import { UserContext } from '../../context/user.context';
 
 export const SelectUser = () => {
 
-	const { userId } = useContext(UserContext);
+	const { userId, setUserId } = useContext(UserContext);
 
   
 	const handleChangeUser = (evt) => {
-		console.log(evt.target.value);
+		setUserId(Number(evt.target.value));
 	};
 
 	return (

@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useRef } from 'react';
+import { useContext, useEffect, useReducer, useRef } from 'react';
 import { Button } from '../Button/Button';
 
 import cn from 'classnames';
@@ -16,6 +16,7 @@ export const JournalForm = ({ addItem }) => {
 	const titleRef = useRef();
 	const dateRef = useRef();
 	const textRef = useRef();
+	const { userId } = useContext(UserContext);
 
 
 
@@ -74,35 +75,33 @@ export const JournalForm = ({ addItem }) => {
 	};
 	
 	return (
-		<UserContext.Consumer>
-			{(context) => (
-				<form className={styles['journal-form']} onSubmit={handleSubmit}>
-					{context.userId}
-					<Input 
-						isValid={isValid.title}
-						type="text" value={values.title} onChange={handleChange} name="title" ref={titleRef} appearance={'title'}/>
-					<label htmlFor="" className={styles.label}>
-						<img src="/calendar.svg" alt="calendar" />
-						<span>Дата</span>
-						<Input 
-							isValid={isValid.date}
-							type="date" ref={dateRef} value={values.date} onChange={handleChange} name="date" />
-					</label>
-					<label htmlFor="" className={styles.label}>
-						<img src="/folder.svg" alt="folder" />
-						<span>Метки</span>				
-						<Input type="text" value={values.tag} name="tag" onChange={handleChange} />
-					</label>
-					<textarea
-						name="text" ref={textRef} id="" cols="30" value={values.text} onChange={handleChange} rows="10" className={
-							cn(styles.input, {
-								[styles.invalid]: !isValid.text
-							})
-						}></textarea>
-					<Button text={'Save'} className={styles.button}/>
-				</form>
-			)}
-		</UserContext.Consumer>
+
+		<form className={styles['journal-form']} onSubmit={handleSubmit}>
+			{ userId }
+			<Input 
+				isValid={isValid.title}
+				type="text" value={values.title} onChange={handleChange} name="title" ref={titleRef} appearance={'title'}/>
+			<label htmlFor="" className={styles.label}>
+				<img src="/calendar.svg" alt="calendar" />
+				<span>Дата</span>
+				<Input 
+					isValid={isValid.date}
+					type="date" ref={dateRef} value={values.date} onChange={handleChange} name="date" />
+			</label>
+			<label htmlFor="" className={styles.label}>
+				<img src="/folder.svg" alt="folder" />
+				<span>Метки</span>				
+				<Input type="text" value={values.tag} name="tag" onChange={handleChange} />
+			</label>
+			<textarea
+				name="text" ref={textRef} id="" cols="30" value={values.text} onChange={handleChange} rows="10" className={
+					cn(styles.input, {
+						[styles.invalid]: !isValid.text
+					})
+				}></textarea>
+			<Button text={'Save'} className={styles.button}/>
+		</form>
+
 		
 	);
 };

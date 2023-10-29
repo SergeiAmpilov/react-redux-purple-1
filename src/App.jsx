@@ -6,6 +6,7 @@ import { Body } from './layouts/Body/Body';
 import { LeftPanel } from './layouts/LeftPanel/LeftPanel';
 import { JournalForm } from './components/JournalForm/JournalForm';
 import { useLocalStorage } from './hooks/use-local-storage.hook';
+import { UserContext } from './context/user.context';
 
 
 const mapItems = i => ({ 
@@ -33,26 +34,18 @@ function App() {
   
 	return (
 		<>
-			<div className="app">
-				<LeftPanel>
-					<Header />
-					<JournalAddButton />
-					<JournalList items={dataList.map(mapItems)} />
-				</LeftPanel>
-				<Body>
-					<JournalForm addItem={handleAddItem} />
-				</Body>
-			</div>
-
-
-
-
-
-
-
-
-      
-
+			<UserContext.Provider value={{ userId: 1 }}>
+				<div className="app">
+					<LeftPanel>
+						<Header />
+						<JournalAddButton />
+						<JournalList items={dataList.map(mapItems)} />
+					</LeftPanel>
+					<Body>
+						<JournalForm addItem={handleAddItem} />
+					</Body>
+				</div>
+			</UserContext.Provider>
 		</>
 	);
 

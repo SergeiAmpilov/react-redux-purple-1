@@ -1,10 +1,13 @@
 import './Button.css';
 import cn from 'classnames';
 
-export const Button = ({ className, text }) => {
+export const Button = ({ className, text, ...props }) => {
 
 	return (
-		<button className={cn(className, 'button accent')}>
+		<button 
+			className={cn(className, 'button accent')}
+			{...props}
+		>
 			{ text }
 		</button>
 	);

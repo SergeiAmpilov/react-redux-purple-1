@@ -34,6 +34,16 @@ export const JournalForm = ({ addItem }) => {
 		}
 	}, [isFormReadyToSubmit, values, addItem]);
 
+	useEffect( () => {
+		dispatchForm({
+			type: 'FIELD_CHANGE',
+			payload: { 
+				name: 'userId',
+				value: userId
+			}
+		});
+	}, [userId]);
+
 
 	useEffect(() => {
 		let timerId;

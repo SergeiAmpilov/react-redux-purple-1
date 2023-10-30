@@ -1,7 +1,8 @@
 import './Button.css';
 import cn from 'classnames';
+import { memo } from 'react';
 
-export const Button = ({ className, text, ...props }) => {
+const Button = ({ className, text, ...props }) => {
 
 	return (
 		<button 
@@ -12,3 +13,6 @@ export const Button = ({ className, text, ...props }) => {
 		</button>
 	);
 };
+
+
+export default memo(Button);

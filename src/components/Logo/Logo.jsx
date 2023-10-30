@@ -1,7 +1,9 @@
 import styles from './Logo.module.css';
 
+import { memo } from 'react';
 
-export const Logo = ({ image, ...props}) => {
+
+function Logo({ image, ...props}) {
 	return (
 		<img 
 			{...props}
@@ -10,4 +12,7 @@ export const Logo = ({ image, ...props}) => {
 			className={styles.logo}
 		/>
 	);
-};
+}
+
+
+export default memo(Logo);

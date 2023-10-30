@@ -1,11 +1,11 @@
 import { useContext, useEffect, useReducer, useRef } from 'react';
-import { Button } from '../Button/Button';
 
 import cn from 'classnames';
 import styles from './JournalForm.module.css';
 import { INITIAL_STATE, formReducer } from './JournalForm.state';
 import { Input } from '../Input/Input';
 import { UserContext } from '../../context/user.context';
+import Button from '../Button/Button';
 
 
 export const JournalForm = ({ addItem }) => {

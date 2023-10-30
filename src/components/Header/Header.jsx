@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { Button } from '../Button/Button';
 import { SelectUser } from '../SelectUser/SelectUser';
-import { Logo } from '../Logo/Logo';
+import Logo from '../Logo/Logo';
+import Button from '../Button/Button';
 
 const logos = [
 	'/pj.svg', 

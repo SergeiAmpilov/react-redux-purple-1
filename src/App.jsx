@@ -6,8 +6,7 @@ import { Body } from './layouts/Body/Body';
 import { LeftPanel } from './layouts/LeftPanel/LeftPanel';
 import { JournalForm } from './components/JournalForm/JournalForm';
 import { useLocalStorage } from './hooks/use-local-storage.hook';
-import { UserContext } from './context/user.context';
-import { useState } from 'react';
+import { UserContextProvider } from './context/user.context';
 
 
 const mapItems = i => ({ 
@@ -19,7 +18,6 @@ const mapItems = i => ({
 function App() {
 
 	const [dataList, setDataList] = useLocalStorage('data');
-	const [userId, setUserId] = useState(1);
 
 	const handleAddItem = (item) => {
 		
@@ -36,7 +34,7 @@ function App() {
   
 	return (
 		<>
-			<UserContext.Provider value={{ userId, setUserId }}>
+			<UserContextProvider>
 				<div className="app">
 					<LeftPanel>
 						<Header />
@@ -47,7 +45,7 @@ function App() {
 						<JournalForm addItem={handleAddItem} />
 					</Body>
 				</div>
-			</UserContext.Provider>
+			</UserContextProvider>
 		</>
 	);
 

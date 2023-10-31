@@ -4,8 +4,6 @@ import { memo } from 'react';
 
 const Button = ({ className, text, ...props }) => {
 
-	console.log('button');
-
 	return (
 		<button 
 			className={cn(className, 'button accent')}

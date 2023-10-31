@@ -15,7 +15,8 @@ export const Header = () => {
 
 	const toggleLogo = useCallback(() => {
 		setLogoIndex( old => old ? 0 : 1);
-	}, []);
+		console.log(logoIndex);
+	}, [ logoIndex ]);
 
 	return (
 		<div className="header">

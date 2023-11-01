@@ -10,12 +10,8 @@ const logos = [
 
 export const Header = () => {
 
-
 	const [logoIndex, setLogoIndex] = useState(0);
 	const [secondIndex, setSecondIndex] = useState(0);
-
-
-	console.log('header');
 
 
 	const toggleLogo = () => {

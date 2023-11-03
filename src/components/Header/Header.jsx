@@ -11,13 +11,10 @@ const logos = [
 export const Header = () => {
 
 	const [logoIndex, setLogoIndex] = useState(0);
-	const [secondIndex, setSecondIndex] = useState(0);
-
 
 	const toggleLogo = () => {
 		setLogoIndex( old => old ? 0 : 1);
-		setSecondIndex( i => i + 1);
-		console.log(secondIndex);
+
 	};
 
 	return (
